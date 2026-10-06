@@ -19,14 +19,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: 设置 Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: 设置 Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
+
+      - name: 接受 Android SDK 许可证
+        run: yes | sdkmanager --licenses || true
 
       - name: 下载并放置 WebView 154 内核
         run: |
