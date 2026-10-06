@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          
 
       - name: 接受 Android SDK 许可证
         run: yes | sdkmanager --licenses || true
