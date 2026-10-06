@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
 
       - name: 接受 Android SDK 许可证
         run: yes | sdkmanager --licenses || true
@@ -32,6 +31,11 @@ jobs:
         run: |
           mkdir -p app/src/main/assets/webview
           wget -O app/src/main/assets/webview/webview.apk "https://github.com/zhaojiahang-max/dsh-mobile-apk/releases/download/1.0/com.google.android.webview_154.0.8037.101-803710103_minAPI29.arm64-v8a.armeabi-v7a.nodpi._apkmirror.com.apk"
+
+      - name: 下载并放置官方快照
+        run: |
+          # 下载官方 arm64 快照，并重命名为工程需要的文件名
+          wget -O app/src/main/assets/snapshot.tar.xz "https://github.com/kelai141/dsh-mobile-apk/releases/download/v0.14.4/snapshot-arm64.tar.xz"
 
       - name: 赋予 Gradle 执行权限
         run: chmod +x ./gradlew
